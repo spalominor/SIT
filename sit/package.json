@@ -1,0 +1,19 @@
+{
+  "name": "sit",
+  "version": "1.0.0",
+  "description": "Sistema de Informacion de Tejidos Frontend",
+  "license": "ISC",
+  "author": "spalominor",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

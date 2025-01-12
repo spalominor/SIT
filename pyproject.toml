@@ -1,0 +1,20 @@
+[project]
+name = "sit"
+version = "0.1.0"
+description = "Sistema de Informacion de Tejidos"
+authors = [
+    {name = "spalominor",email = "spalominor@unal.edu.co"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django (>=5.1.4,<6.0.0)",
+    "python-dotenv (>=1.0.1,<2.0.0)",
+    "pandas (>=2.2.3,<3.0.0)",
+    "django-compressor (>=4.5.1,<5.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
