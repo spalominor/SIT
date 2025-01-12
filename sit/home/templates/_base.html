@@ -1,0 +1,70 @@
+<!-- templates/_base.html -->
+
+{% load compress %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django + Tailwind CSS + Flowbite</title>
+
+    <!-- CSS -->
+    {% compress css %}
+    <link rel="stylesheet" href="{% static 'src/output.css' %}">
+    {% endcompress %}
+
+    <!-- Flowbite -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.5.1/flowbite.min.js" defer></script>
+</head>
+
+<body class="bg-green-50 flex">
+
+    <!-- Sidebar -->
+    <aside class="w-64 h-screen bg-white shadow-md fixed">
+        <div class="h-full flex flex-col">
+            <!-- Logo -->
+            <div class="flex items-center justify-center h-16 bg-green-200">
+                <h1 class="text-xl font-bold text-green-700">Mi App</h1>
+            </div>
+            <!-- Navigation -->
+            <nav class="flex-grow">
+                <ul class="mt-4 space-y-2">
+                    <li>
+                        <a href="{% url 'home' %}" class="flex items-center px-4 py-2 text-gray-700 hover:bg-green-100 hover:text-green-900">
+                            <span class="ml-3">Inicio</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'home' %}" class="flex items-center px-4 py-2 text-gray-700 hover:bg-green-100 hover:text-green-900">
+                            <span class="ml-3">Acerca de</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'home' %}" class="flex items-center px-4 py-2 text-gray-700 hover:bg-green-100 hover:text-green-900">
+                            <span class="ml-3">Contacto</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- Footer -->
+            <div class="h-16 bg-green-200 flex items-center justify-center">
+                <p class="text-sm text-green-700">© 2025 Mi App</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="ml-64 w-full">
+        <div class="container mx-auto mt-4 px-4">
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </main>
+
+</body>
+
+</html>
