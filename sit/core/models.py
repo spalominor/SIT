@@ -2,19 +2,19 @@ from django.db import models
 
 
 
-# Create your models here.
 class Cliente(models.Model):
     """
     Modelo de cliente. Aquí se almacenan los datos de los clientes de la
     empresa. 
     Los campos son:
+    - id: Identificador único del cliente (clave primaria)
     - nombre: Nombre del cliente
     - celular: Número de celular del cliente
     - direccion: Dirección del cliente
     - observaciones: Observaciones adicionales sobre el cliente
 
-
     Atributos:
+    - id: Identificador único del cliente
     - nombre: Nombre del cliente
     - celular: Número de celular del cliente
     - direccion: Dirección del cliente
@@ -23,6 +23,7 @@ class Cliente(models.Model):
     Métodos:
     - __str__: Representación amigable del cliente
     """
+    id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
     celular = models.CharField(max_length=10)
     direccion = models.TextField(max_length=100)
