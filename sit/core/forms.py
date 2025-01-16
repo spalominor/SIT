@@ -54,7 +54,7 @@ class ProductoForm(forms.ModelForm):
     """
     class Meta:
         model = Producto
-        fields = ['nombre', 'precio', 'descripcion', 'stock']
+        fields = ['nombre', 'precio_base', 'descripcion', 'stock']
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
             'precio': forms.TextInput(attrs={'class': 'form-control'}),
@@ -71,7 +71,6 @@ class InsumoForm(forms.ModelForm):
 
     Campos:
     - nombre: Nombre del insumo
-    - cantidad: Cantidad del insumo
     - precio: Precio del insumo
     - descripcion: Descripción del insumo
     - stock: Cantidad de stock del insumo
@@ -85,10 +84,9 @@ class InsumoForm(forms.ModelForm):
     """
     class Meta:
         model = Insumo
-        fields = ['nombre', 'cantidad', 'precio', 'descripcion', 'stock']
+        fields = ['nombre', 'precio_base', 'descripcion', 'stock']
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
-            'cantidad': forms.TextInput(attrs={'class': 'form-control'}),
             'precio': forms.TextInput(attrs={'class': 'form-control'}),
             'descripcion': forms.Textarea(attrs={'class': 'form-control',
                                                  'rows': 3}),

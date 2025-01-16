@@ -68,10 +68,12 @@ def editar_cliente(request, cliente_id):
             form = forms.ClienteForm(request.POST, instance=cliente)
             if form.is_valid():
                 form.save()
+                messages.warning(request, "Cliente actualizado exitosamente.")
                 return redirect('listar_clientes')
         elif 'delete' in request.POST:
             # Si el usuario desea eliminar
             cliente.delete()
+            messages.warning(request, "Cliente eliminado exitosamente.")
             return redirect('listar_clientes')
     else:
         form = forms.ClienteForm(instance=cliente)
@@ -97,7 +99,7 @@ def crear_producto(request):
         form = forms.ProductoForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "producto creado exitosamente.")
+            messages.success(request, "Producto creado exitosamente.")
             return redirect('listar_productos')  
     else:
         form = forms.ProductoForm()

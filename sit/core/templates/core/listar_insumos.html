@@ -32,8 +32,8 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">Nombre</th>
-                    <th scope="col" class="px-6 py-3">Cantidad</th>
                     <th scope="col" class="px-6 py-3">Precio</th>
+                    <th scope="col" class="px-6 py-3">Stock</th>
                     <th scope="col" class="px-6 py-3">
                         <span class="sr-only">Acciones</span>
                     </th>
@@ -46,10 +46,10 @@
                         {{ insumo.nombre }}
                     </th>
                     <td class="px-6 py-4">
-                        {{ insumo.cantidad }}
+                        ${{ insumo.precio_base }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ insumo.precio }}
+                        {{ insumo.stock }}
                     </td>
                     <td class="px-6 py-4 text-right">
                         <a href="{% url 'editar_insumo' insumo.id %}" 

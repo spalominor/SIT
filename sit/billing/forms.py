@@ -1,11 +1,11 @@
 from django import forms
 from core.models import Cliente, Producto
-from .models import Factura, DetalleFactura
+from .models import Factura, DetalleProductos, DetalleInsumos
 
 
 
+"""
 class FacturaForm(forms.ModelForm):
-    """
     Formulario para crear y editar facturas.
 
     Campos:
@@ -32,7 +32,6 @@ class FacturaForm(forms.ModelForm):
     
     Métodos:
     - __init__: Constructor de la clase
-    """
     class Meta:
         model = Factura
         fields = ['numero_factura', 'fecha_creacion', 'fecha_finalizacion', 
@@ -54,3 +53,4 @@ class FacturaForm(forms.ModelForm):
             'observaciones': forms.Textarea(attrs={'class': 'form-control', 
                                                    'rows': 3}),
         }
+    """

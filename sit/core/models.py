@@ -62,7 +62,7 @@ class Producto(models.Model):
             ('fajon', 'Fajón'),
             ('puno', 'Puño'),
             ('bordado', 'Bordado'),
-            ('laser', 'Láser')
+            ('laser', 'Láser'),
             ('otro', 'Otro'),
         ],
         default='cuello',
