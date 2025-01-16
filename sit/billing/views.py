@@ -1,15 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from . import forms
+from . import models
 
-# Create your views here.
-def billing(request):
-    """
-    Principal billing page view. Here we render the billing website page for
-    the users.
-    
-    Args:
-        request (HttpRequest): HTTP request
-        
-    Returns:
-        HttpResponse: HTTP response
-    """
-    return render(request, 'billing/billing.html')
