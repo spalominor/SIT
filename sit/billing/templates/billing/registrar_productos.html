@@ -1,0 +1,51 @@
+<!-- templates/registrar_productos.html -->
+
+{% extends "_base.html" %}
+
+{% block content %}
+<h1>Registrar Productos</h1>
+
+<!-- Búsqueda de productos existentes -->
+<h2>Buscar Producto</h2>
+<form method="get" action="{% url 'buscar_producto' %}">
+    <label for="busqueda_producto">Buscar:</label>
+    <input type="text" id="busqueda_producto" name="q" placeholder="Nombre del producto">
+    <button type="submit">Buscar</button>
+</form>
+
+{% if resultados_productos %}
+<h3>Resultados de la Búsqueda:</h3>
+<ul>
+    {% for producto in resultados_productos %}
+    <li>{{ producto.nombre }} - Precio: {{ producto.precio_unitario }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<hr>
+
+<!-- Registro de un nuevo producto -->
+<h2>Registrar Nuevo Producto</h2>
+<form method="post">
+    {% csrf_token %}
+    <label for="nombre_producto">Producto:</label>
+    <input type="text" id="nombre_producto" name="nombre_producto" required><br><br>
+
+    <label for="cantidad">Cantidad:</label>
+    <input type="number" id="cantidad" name="cantidad" min="1" required><br><br>
+
+    <label for="precio_unitario">Precio Unitario:</label>
+    <input type="number" step="0.01" id="precio_unitario" name="precio_unitario" required><br><br>
+
+    <button type="submit">Añadir Producto</button>
+</form>
+
+<h2>Productos Añadidos:</h2>
+<ul>
+    {% for producto in productos %}
+    <li>{{ producto.nombre }} - Cantidad: {{ producto.cantidad }} - Precio Unitario: {{ producto.precio_unitario }}</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'crear_factura_insumos' %}">Siguiente</a>
+{% endblock %}

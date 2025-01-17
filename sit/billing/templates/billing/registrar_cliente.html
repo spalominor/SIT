@@ -1,0 +1,46 @@
+<!-- templates/registrar_cliente.html -->
+
+{% extends "_base.html" %}
+
+{% block content %}
+<h1>Registrar Cliente</h1>
+
+<!-- Búsqueda de clientes existentes -->
+<h2>Buscar Cliente</h2>
+<form method="get" action="{% url 'buscar_cliente' %}">
+    <label for="busqueda_cliente">Buscar:</label>
+    <input type="text" id="busqueda_cliente" name="q" placeholder="Nombre o correo del cliente">
+    <button type="submit">Buscar</button>
+</form>
+
+{% if resultados_clientes %}
+<h3>Resultados de la Búsqueda:</h3>
+<ul>
+    {% for cliente in resultados_clientes %}
+    <li>{{ cliente.nombre }} - {{ cliente.email }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<hr>
+
+<!-- Registro de un nuevo cliente -->
+<h2>Registrar Nuevo Cliente</h2>
+<form method="post">
+    {% csrf_token %}
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required><br><br>
+
+    <label for="direccion">Dirección:</label>
+    <input type="text" id="direccion" name="direccion" required><br><br>
+
+    <label for="telefono">Teléfono:</label>
+    <input type="text" id="telefono" name="telefono" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <button type="submit">Continuar</button>
+</form>
+{% endblock %}
+

@@ -4,8 +4,8 @@ from .models import Factura, DetalleProductos, DetalleInsumos
 
 
 
-"""
 class FacturaForm(forms.ModelForm):
+    """
     Formulario para crear y editar facturas.
 
     Campos:
@@ -19,7 +19,6 @@ class FacturaForm(forms.ModelForm):
         - cliente: Cliente al que se le emite la factura
     Información de financiera:
         - valor_venta: Valor total de la venta
-        - coste_insumos: Costo total de insumos
         - coste_servicio: Costo del servicio
     Información adicional:
         - adelanto: Adelanto realizado
@@ -32,9 +31,10 @@ class FacturaForm(forms.ModelForm):
     
     Métodos:
     - __init__: Constructor de la clase
+    """
     class Meta:
         model = Factura
-        fields = ['numero_factura', 'fecha_creacion', 'fecha_finalizacion', 
+        fields = ['numero_factura', 'fecha_finalizacion', 
                   'fecha_entrega', 'usuario_responsable', 'cliente', 
                   'valor_venta', 'coste_insumos', 'coste_servicio', 'adelanto', 
                   'valor_envio', 'observaciones']
@@ -46,11 +46,9 @@ class FacturaForm(forms.ModelForm):
             'usuario_responsable': forms.Select(attrs={'class': 'form-control'}),
             'cliente': forms.Select(attrs={'class': 'form-control'}),
             'valor_venta': forms.NumberInput(attrs={'class': 'form-control'}),
-            'coste_insumos': forms.NumberInput(attrs={'class': 'form-control'}),
             'coste_servicio': forms.NumberInput(attrs={'class': 'form-control'}),
             'adelanto': forms.NumberInput(attrs={'class': 'form-control'}),
             'valor_envio': forms.NumberInput(attrs={'class': 'form-control'}),
             'observaciones': forms.Textarea(attrs={'class': 'form-control', 
                                                    'rows': 3}),
         }
-    """
