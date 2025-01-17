@@ -119,13 +119,14 @@ def listar_productos(request):
     - HttpResponse con la respuesta HTTP.
     """
     productos = models.Producto.objects.all()
-    return render(request, 'core/listar_productos.html', {'productos': productos})
+    return render(request, 'core/listar_productos.html', 
+                  {'productos': productos})
 
 
 def editar_producto(request, producto_id):
     """
     Vista para editar un producto.
-    Si el método es POST, se intenta actualizar el producto en la base de datos.
+    Si el método es POST, se intenta actualizar el producto en la base de datos
     Si el formulario es válido, se guarda el producto y se redirige a la lista
     de productos.
     Si el método es GET, se muestra el formulario con los datos del producto
@@ -143,7 +144,11 @@ def editar_producto(request, producto_id):
             # Si el usuario desea actualizar
             form = forms.ProductoForm(request.POST, instance=producto)
             if form.is_valid():
+                producto = form.save(commit=False)
+                # Verificar si se ha mandado un valor 'activo' en el formulario
+                producto.activo = 'activo' in request.POST
                 form.save()
+                messages.warning(request, "Producto actualizado exitosamente.")
                 return redirect('listar_productos')
         elif 'delete' in request.POST:
             # Si el usuario desea eliminar
@@ -217,7 +222,11 @@ def editar_insumo(request, insumo_id):
             # Si el usuario desea actualizar
             form = forms.InsumoForm(request.POST, instance=insumo)
             if form.is_valid():
+                insumo = form.save(commit=False)
+                # Verificar si se ha mandado un valor 'activo' en el formulario
+                insumo.activo = 'activo' in request.POST
                 form.save()
+                messages.warning(request, "Insumo actualizado exitosamente.")
                 return redirect('listar_insumos')
         elif 'delete' in request.POST:
             # Si el usuario desea eliminar
